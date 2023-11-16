@@ -49,6 +49,9 @@ const DatePickerProvider = ({ children, options: customOptions, onChange, show, 
 
 	const options = { ...defaultOptions, ...customOptions }
 	const [view, setView] = useState<Views>(showOnlyMonth ? "months": "days")
+	console.log("🚀 ----------------------------------------------------------------------🚀")
+	console.log("🚀 ~ file: DatePickerProvider.tsx:52 ~ DatePickerProvider ~ view:", view)
+	console.log("🚀 ----------------------------------------------------------------------🚀")
 	const [selectedDate, setSelectedDate] = selectedDateState || useState<Date>(options?.defaultDate || new Date())
 	const [showSelectedDate, setShowSelectedDate] = useState<boolean>(options?.defaultDate !== null)
 	const selectedMonth = selectedDate.getMonth()
