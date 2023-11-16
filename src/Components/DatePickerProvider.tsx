@@ -42,7 +42,7 @@ interface IDatePickerProviderProps {
 	show: boolean
 	setShow: (show: boolean) => void
 	selectedDateState?: [Date, (date: Date) => void]
-	selectedView: [Views,(view: Views) => void]
+	selectedView: [Views,Dispatch<SetStateAction<Views>>]
 }
 
 const DatePickerProvider = ({ children, options: customOptions, onChange, show, setShow, selectedDateState,selectedView }: IDatePickerProviderProps) => {

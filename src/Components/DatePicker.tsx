@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactElement, useContext, useEffect, useRef, ReactNode } from "react"
+import React, { forwardRef, ReactElement, useContext, useEffect, useRef, ReactNode, Dispatch, SetStateAction } from "react"
 import { twMerge } from "tailwind-merge"
 import { IOptions } from "../Options"
 import defaultOptions from "../Options"
@@ -14,8 +14,7 @@ export interface IDatePickerProps {
 	setShow: (show: boolean) => void
 	classNames?: string
 	selectedDateState?: [Date, (date: Date) => void]
-	selectedView: [Views,(view: Views) => void]
-
+	selectedView: [Views,Dispatch<SetStateAction<Views>>]
 }
 
 const DatePicker = ({ value, children, options, onChange, classNames, show, setShow, selectedDateState,selectedView }: IDatePickerProps) => (
