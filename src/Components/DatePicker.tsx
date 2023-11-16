@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge"
 import { IOptions } from "../Options"
 import defaultOptions from "../Options"
 import DatePickerPopup from "./DatePickerPopup"
-import DatePickerProvider, { DatePickerContext } from "./DatePickerProvider"
+import DatePickerProvider, { DatePickerContext, Views } from "./DatePickerProvider"
 
 export interface IDatePickerProps {
 	value?: Date
@@ -14,12 +14,13 @@ export interface IDatePickerProps {
 	setShow: (show: boolean) => void
 	classNames?: string
 	selectedDateState?: [Date, (date: Date) => void]
-	showOnlyMonth?:boolean
+	selectedView: [Views,(view: Views) => void]
+
 }
 
-const DatePicker = ({ value, children, options, onChange, classNames, show, setShow, selectedDateState,showOnlyMonth }: IDatePickerProps) => (
+const DatePicker = ({ value, children, options, onChange, classNames, show, setShow, selectedDateState,selectedView }: IDatePickerProps) => (
 	<div className={twMerge("w-full", classNames)}>
-		<DatePickerProvider options={options} onChange={onChange} show={show} setShow={setShow} selectedDateState={selectedDateState } showOnlyMonth={showOnlyMonth}>
+		<DatePickerProvider options={options} onChange={onChange} show={show} setShow={setShow} selectedDateState={selectedDateState } selectedView={selectedView}>
 			<DatePickerMain value={value} options={options}>
 				{children}
 			</DatePickerMain>

@@ -42,16 +42,13 @@ interface IDatePickerProviderProps {
 	show: boolean
 	setShow: (show: boolean) => void
 	selectedDateState?: [Date, (date: Date) => void]
-	showOnlyMonth?:boolean
+	selectedView: [Views,(view: Views) => void]
 }
 
-const DatePickerProvider = ({ children, options: customOptions, onChange, show, setShow, selectedDateState ,showOnlyMonth}: IDatePickerProviderProps) => {
+const DatePickerProvider = ({ children, options: customOptions, onChange, show, setShow, selectedDateState,selectedView }: IDatePickerProviderProps) => {
 
 	const options = { ...defaultOptions, ...customOptions }
-	const [view, setView] = useState<Views>(showOnlyMonth ? "months": "days")
-	console.log("🚀 ----------------------------------------------------------------------🚀")
-	console.log("🚀 ~ file: DatePickerProvider.tsx:52 ~ DatePickerProvider ~ view:", view)
-	console.log("🚀 ----------------------------------------------------------------------🚀")
+	const [view, setView] = selectedView || useState<Views>("days")
 	const [selectedDate, setSelectedDate] = selectedDateState || useState<Date>(options?.defaultDate || new Date())
 	const [showSelectedDate, setShowSelectedDate] = useState<boolean>(options?.defaultDate !== null)
 	const selectedMonth = selectedDate.getMonth()
