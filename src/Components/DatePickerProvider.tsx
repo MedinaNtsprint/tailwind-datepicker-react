@@ -48,7 +48,7 @@ interface IDatePickerProviderProps {
 const DatePickerProvider = ({ children, options: customOptions, onChange, show, setShow, selectedDateState ,selectedView}: IDatePickerProviderProps) => {
 
 	const options = { ...defaultOptions, ...customOptions }
-	const [view, setView] = selectedView ||useState<Views>("days")
+	const [view, setView] = useState<Views>(selectedView || "days")
 	const [selectedDate, setSelectedDate] = selectedDateState || useState<Date>(options?.defaultDate || new Date())
 	const [showSelectedDate, setShowSelectedDate] = useState<boolean>(options?.defaultDate !== null)
 	const selectedMonth = selectedDate.getMonth()
